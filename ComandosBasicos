@@ -1,0 +1,31 @@
+import subprocess
+
+print('1. Crear TXT\n2. Crear carpeta "Calificaciones"\n3. Carpeta "primerparcial"\n4. Mover archivo misnotas.txt\n')
+
+def ejecutar(comando):
+    subprocess.run(comando, shell=True)
+
+while True:
+    opcion = int(input('Selecciona una opcion: '))
+
+    if opcion == 1:
+        ejecutar('touch ~/Escritorio/misnotas.txt')
+
+    elif opcion == 2:
+        ejecutar('mkdir ~/Escritorio/calificaciones')
+
+    elif opcion == 3:
+        ejecutar('mkdir ~/Escritorio/calificaciones/primerparcial')
+
+    elif opcion == 4:
+        ejecutar('mv ~/Escritorio/misnotas.txt ~/Escritorio/calificaciones')
+
+    elif opcion == 5:
+        ejecutar('mv ~/Escritorio/Calculadora.py ~/Escritorio/calificaciones/primerparcial/')
+
+    elif opcion == 6:
+        print('Salir')
+        break
+
+    else:
+        print('Opcion no valida')
