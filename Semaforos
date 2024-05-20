@@ -1,0 +1,33 @@
+'''
+Programa creado en colaboracion con:
+-Oscar Delgadillo Valdés
+-Aaron Arce Medina
+-Marco Antonio Carillo Soteno
+'''
+
+import threading
+import time
+
+#crea un semaforo
+
+semaphore = threading.Semaphore(10)
+
+def tarea(id):
+    print(f"Tarea {id} intentando acceder al recurso")
+    with semaphore:
+        print(f"Tarea {id} ha adquirido del semaforo")
+        time.sleep(2)
+        print(f"Tarea {id} ha liberado del semaforo")
+
+#hilos que ejecuten la funcion "Tarea"
+
+threads = []
+for i in range(5):
+    thread = threading.Thread(target = tarea, args = (i, ))
+    threads.append(thread)
+    thread.start()
+
+#esperar a los hilos
+
+for thread in threads:
+    thread.join()
